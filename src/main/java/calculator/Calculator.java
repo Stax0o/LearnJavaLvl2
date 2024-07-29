@@ -5,6 +5,12 @@ public class Calculator {
         return a + b;
     }
 
+    public static int add(String a, String b) {
+        int numA = Integer.parseInt(a);
+        int numB = Integer.parseInt(b);
+        return numA + numB;
+    }
+
     public static int subtract(int a, int b) {
         return a - b;
     }

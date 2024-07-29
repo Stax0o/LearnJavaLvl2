@@ -14,6 +14,11 @@ class CalculatorTest {
     }
 
     @Test
+    void addString() {
+        assertThrows(Exception.class, () -> Calculator.add("24", "fe"));
+    }
+
+    @Test
     void addAnotherSimple() {
         int expected = 48;
         int result = Calculator.add(39, 9);
