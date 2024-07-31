@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarArrayListTest {
 
@@ -93,5 +94,45 @@ class CarArrayListTest {
         Car car = new Car("Toyota", 15);
         assertFalse(carList.remove(car));
         assertEquals(35, carList.size());
+    }
+
+    @Test
+    public void addingAnItemByIndex5(){
+        assertEquals("Brand 5", carList.get(5).getBrand());
+        Car car = new Car("BMW", 15);
+        carList.add(car, 5);
+        assertEquals("BMW", carList.get(5).getBrand());
+        assertEquals("Brand 5", carList.get(6).getBrand());
+    }
+
+    @Test
+    public void AddsElementBeginningList(){
+        assertEquals("Brand 0", carList.get(0).getBrand());
+        Car car = new Car("BMW", 15);
+        carList.add(car, 0);
+        assertEquals("BMW", carList.get(0).getBrand());
+        assertEquals("Brand 0", carList.get(1).getBrand());
+    }
+
+    @Test
+    public void AddElementElementEndList(){
+        assertEquals("Brand 34", carList.get(34).getBrand());
+        Car car = new Car("JT", 99);
+        carList.add(car, 34);
+        assertEquals("JT", carList.get(34).getBrand());
+        assertEquals("Brand 34", carList.get(35).getBrand());
+    }
+
+    @Test
+    public void RemoveElementBeginningList(){
+        assertTrue(carList.removeAt(34));
+        assertEquals(34, carList.size());
+    }
+
+    @Test
+    public void RemoveElementElementEndList(){
+        assertEquals("Brand 0", carList.get(0).getBrand());
+        assertTrue(carList.removeAt(0));
+        assertEquals("Brand 1", carList.get(0).getBrand());
     }
 }
