@@ -1,4 +1,4 @@
-package calculator;
+package studyingExceptions;
 
 import org.junit.jupiter.api.Test;
 
