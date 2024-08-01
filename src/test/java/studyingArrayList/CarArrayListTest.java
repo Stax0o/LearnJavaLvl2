@@ -2,17 +2,18 @@ package studyingArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import studyingLinkedList.CarLinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarArrayListTest {
 
-    private CarArrayList carList;
+    private CarList carList;
 
     @BeforeEach
     void setUp() {
-        carList = new CarArrayList();
+        carList = new CarLinkedList();
         for (int i = 0; i < 35; i++) {
             carList.add(new Car("Brand " + i, i));
         }
@@ -34,7 +35,7 @@ class CarArrayListTest {
     @Test
     void WhenRemoveCarThenSizeChangeByOneAndReturnTrue() {
         assertEquals(35, carList.size());
-        carList.remove(new Car("Brand 6", 6));
+        carList.remove(carList.get(6));
         assertEquals(34, carList.size());
     }
 
