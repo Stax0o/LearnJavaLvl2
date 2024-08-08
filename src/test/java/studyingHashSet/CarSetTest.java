@@ -1,4 +1,4 @@
-package StudyingHashSet;
+package studyingHashSet;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ class CarSetTest {
 
     @BeforeEach
     void setUp() {
-        //Todo Создать коллекцию
+        carSet = new CarHashSet();
         for (int i = 0; i < 35; i++) {
             carSet.add(new Car("Brand " + i, i));
         }

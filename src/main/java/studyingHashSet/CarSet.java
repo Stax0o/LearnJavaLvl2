@@ -1,4 +1,4 @@
-package StudyingHashSet;
+package studyingHashSet;
 
 import studyingArrayList.Car;
 
