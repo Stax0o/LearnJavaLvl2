@@ -3,15 +3,11 @@ package studyingLinkedList;
 import studyingArrayList.Car;
 import studyingArrayList.CarList;
 
+import java.util.Iterator;
+
 public class CarLinkedList implements CarList {
     private Node first = null;
     private Node last = null;
-
-    @Override
-    public boolean contains(Car car) {
-        return findElement(car) != -1;
-    }
-
     private int size = 0;
 
     @Override
@@ -99,6 +95,32 @@ public class CarLinkedList implements CarList {
         first = null;
         last = null;
         size = 0;
+    }
+
+    @Override
+    public boolean contains(Car car) {
+        return findElement(car) != -1;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+
+        return new Iterator<Car>() {
+
+            Node node = first;
+
+            @Override
+            public boolean hasNext() {
+                return node != null;
+            }
+
+            @Override
+            public Car next() {
+                Car car = node.value;
+                node = node.next;
+                return car;
+            }
+        };
     }
 
     private int findElement(Car car) {
