@@ -1,6 +1,7 @@
 package studyingArrayList;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class CarArrayList implements CarList {
     private Car[] cars = new Car[10];
@@ -13,7 +14,7 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public void add(Car car, int index) {
+    public boolean add(Car car, int index) {
         increaseArray();
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
@@ -21,22 +22,28 @@ public class CarArrayList implements CarList {
         System.arraycopy(cars, index, cars, index + 1, size - index);
         cars[index] = car;
         size++;
+        return true;
     }
 
     @Override
-    public void add(Car car) {
+    public boolean contains(Car car) {
+        return findElement(car) != -1;
+    }
+
+    @Override
+    public boolean add(Car car) {
         increaseArray();
         cars[size] = car;
         size++;
+        return true;
     }
 
     @Override
     public boolean remove(Car car) {
-        for (int i = 0; i < size; i++) {
-            if (cars[i].getBrand().equals(car.getBrand()) &&
-                    cars[i].getNumber() == car.getNumber()) {
-                return removeAt(i);
-            }
+        int index = findElement(car);
+        if (index != -1) {
+            removeAt(index);
+            return true;
         }
         return false;
     }
@@ -58,6 +65,33 @@ public class CarArrayList implements CarList {
     public void clear() {
         cars = new Car[10];
         size = 0;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return new Iterator<Car>() {
+
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                return cars[index++];
+            }
+        };
+    }
+
+    private int findElement(Car car) {
+        for (int i = 0; i < size; i++) {
+            if (car.equals(cars[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private void checkIndex(int index) {

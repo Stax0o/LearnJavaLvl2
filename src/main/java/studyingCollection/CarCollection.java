@@ -1,11 +1,15 @@
-package studyingHashSet;
+package studyingCollection;
 
 import studyingArrayList.Car;
-import studyingCollection.CarCollection;
 
-public interface CarSet extends CarCollection {
+public interface CarCollection extends Iterable<Car> {
     boolean add(Car car);
+
     boolean remove(Car car);
+
     int size();
+
     void clear();
+
+    boolean contains(Car car);
 }

@@ -3,6 +3,8 @@ package studyingLinkedList;
 import studyingArrayList.Car;
 import studyingArrayList.CarList;
 
+import java.util.Iterator;
+
 public class CarLinkedList implements CarList {
     private Node first = null;
     private Node last = null;
@@ -14,7 +16,7 @@ public class CarLinkedList implements CarList {
     }
 
     @Override
-    public void add(Car car) {
+    public boolean add(Car car) {
         if (first == null) {
             first = new Node(null, car, null);
             last = first;
@@ -24,16 +26,16 @@ public class CarLinkedList implements CarList {
             secondNode.next = last;
         }
         size++;
+        return true;
     }
 
     @Override
-    public void add(Car car, int index) {
+    public boolean add(Car car, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         if (index == size) {
-            add(car);
-            return;
+            return add(car);
         }
         Node node = getNode(index);
 
@@ -46,16 +48,15 @@ public class CarLinkedList implements CarList {
             first = newNode;
         }
         size++;
+        return true;
     }
 
     @Override
     public boolean remove(Car car) {
-        Node node = first;
-        for (int i = 0; i < size; i++) {
-            if (node.value.equals(car)) {
-                return removeAt(i);
-            }
-            node = node.next;
+        int index = findElement(car);
+        if (index != -1) {
+            removeAt(index);
+            return true;
         }
         return false;
     }
@@ -94,6 +95,43 @@ public class CarLinkedList implements CarList {
         first = null;
         last = null;
         size = 0;
+    }
+
+    @Override
+    public boolean contains(Car car) {
+        return findElement(car) != -1;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+
+        return new Iterator<Car>() {
+
+            Node node = first;
+
+            @Override
+            public boolean hasNext() {
+                return node != null;
+            }
+
+            @Override
+            public Car next() {
+                Car car = node.value;
+                node = node.next;
+                return car;
+            }
+        };
+    }
+
+    private int findElement(Car car) {
+        Node node = first;
+        for (int i = 0; i < size; i++) {
+            if (node.value.equals(car)) {
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
     }
 
     private Node getNode(int index) {
