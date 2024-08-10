@@ -2,10 +2,8 @@ package studyingArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import studyingLinkedList.CarLinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarArrayListTest {
 

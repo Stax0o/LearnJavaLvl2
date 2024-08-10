@@ -3,11 +3,10 @@ package studyingCollection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import studyingArrayList.Car;
-import studyingArrayList.CarArrayList;
 import studyingHashSet.CarHashSet;
-import studyingLinkedList.CarLinkedList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 class CarCollectionTest {
 
     private CarCollection cars;
