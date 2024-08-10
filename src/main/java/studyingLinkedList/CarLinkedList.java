@@ -6,6 +6,12 @@ import studyingArrayList.CarList;
 public class CarLinkedList implements CarList {
     private Node first = null;
     private Node last = null;
+
+    @Override
+    public boolean contains(Car car) {
+        return findElement(car) != -1;
+    }
+
     private int size = 0;
 
     @Override
@@ -51,12 +57,10 @@ public class CarLinkedList implements CarList {
 
     @Override
     public boolean remove(Car car) {
-        Node node = first;
-        for (int i = 0; i < size; i++) {
-            if (node.value.equals(car)) {
-                return removeAt(i);
-            }
-            node = node.next;
+        int index = findElement(car);
+        if (index != -1) {
+            removeAt(index);
+            return true;
         }
         return false;
     }
@@ -95,6 +99,17 @@ public class CarLinkedList implements CarList {
         first = null;
         last = null;
         size = 0;
+    }
+
+    private int findElement(Car car) {
+        Node node = first;
+        for (int i = 0; i < size; i++) {
+            if (node.value.equals(car)) {
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
     }
 
     private Node getNode(int index) {

@@ -13,7 +13,7 @@ class CarArrayListTest {
 
     @BeforeEach
     void setUp() {
-        carList = new CarLinkedList();
+        carList = new CarArrayList();
         for (int i = 0; i < 35; i++) {
             carList.add(new Car("Brand " + i, i));
         }
@@ -33,40 +33,40 @@ class CarArrayListTest {
     }
 
     @Test
-    void WhenRemoveCarThenSizeChangeByOneAndReturnTrue() {
+    void whenRemoveCarThenSizeChangeByOneAndReturnTrue() {
         assertEquals(35, carList.size());
         carList.remove(carList.get(6));
         assertEquals(34, carList.size());
     }
 
     @Test
-    void WhenRemoveNonexistentCarThenSizeNotChangeAndReturnFalse() {
+    void whenRemoveNonexistentCarThenSizeNotChangeAndReturnFalse() {
         assertEquals(35, carList.size());
         carList.remove(new Car("BMW", 10));
         assertEquals(35, carList.size());
     }
 
     @Test
-    void WhenRemoveAtOneCarThenSizeChangeByOneAndReturnTrue() {
+    void whenRemoveAtOneCarThenSizeChangeByOneAndReturnTrue() {
         assertEquals(35, carList.size());
         carList.removeAt(1);
         assertEquals(34, carList.size());
     }
 
     @Test
-    void WhenRemoveAtNonexistentCarThenSizeNotChangeAndReturnFalse() {
+    void whenRemoveAtNonexistentCarThenSizeNotChangeAndReturnFalse() {
         assertEquals(35, carList.size());
         assertThrows(IndexOutOfBoundsException.class, () -> carList.removeAt(1000));
         assertEquals(35, carList.size());
     }
 
     @Test
-    void WhenRemoveAtNonexistentCarThrowAnIndexOutOfBoundsException() {
+    void whenRemoveAtNonexistentCarThrowAnIndexOutOfBoundsException() {
         assertThrows(IndexOutOfBoundsException.class, () -> carList.removeAt(1000));
     }
 
     @Test
-    void WhenRGetNonexistentCarThrowAnIndexOutOfBoundsException() {
+    void whenGetNonExistentCarThrowAnIndexOutOfBoundsException() {
         assertThrows(IndexOutOfBoundsException.class, () -> carList.get(1000));
     }
 
@@ -98,7 +98,7 @@ class CarArrayListTest {
     }
 
     @Test
-    public void addingAnItemByIndex5(){
+    public void addingAnItemByIndex5() {
         assertEquals("Brand 5", carList.get(5).getBrand());
         Car car = new Car("BMW", 15);
         carList.add(car, 5);
@@ -107,7 +107,7 @@ class CarArrayListTest {
     }
 
     @Test
-    public void AddsElementBeginningList(){
+    public void addsElementBeginningList() {
         assertEquals("Brand 0", carList.get(0).getBrand());
         Car car = new Car("BMW", 15);
         carList.add(car, 0);
@@ -116,7 +116,7 @@ class CarArrayListTest {
     }
 
     @Test
-    public void AddElementElementEndList(){
+    public void addElementElementEndList() {
         assertEquals("Brand 34", carList.get(34).getBrand());
         Car car = new Car("JT", 99);
         carList.add(car, 34);
@@ -125,13 +125,13 @@ class CarArrayListTest {
     }
 
     @Test
-    public void RemoveElementBeginningList(){
+    public void removeElementBeginningList() {
         assertTrue(carList.removeAt(34));
         assertEquals(34, carList.size());
     }
 
     @Test
-    public void RemoveElementElementEndList(){
+    public void removeElementElementEndList() {
         assertEquals("Brand 0", carList.get(0).getBrand());
         assertTrue(carList.removeAt(0));
         assertEquals("Brand 1", carList.get(0).getBrand());

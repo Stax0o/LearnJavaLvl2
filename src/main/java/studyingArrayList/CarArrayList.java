@@ -25,6 +25,11 @@ public class CarArrayList implements CarList {
     }
 
     @Override
+    public boolean contains(Car car) {
+        return findElement(car) != -1;
+    }
+
+    @Override
     public boolean add(Car car) {
         increaseArray();
         cars[size] = car;
@@ -34,11 +39,10 @@ public class CarArrayList implements CarList {
 
     @Override
     public boolean remove(Car car) {
-        for (int i = 0; i < size; i++) {
-            if (cars[i].getBrand().equals(car.getBrand()) &&
-                    cars[i].getNumber() == car.getNumber()) {
-                return removeAt(i);
-            }
+        int index = findElement(car);
+        if (index != -1) {
+            removeAt(index);
+            return true;
         }
         return false;
     }
@@ -60,6 +64,15 @@ public class CarArrayList implements CarList {
     public void clear() {
         cars = new Car[10];
         size = 0;
+    }
+
+    private int findElement(Car car) {
+        for (int i = 0; i < size; i++) {
+            if (car.equals(cars[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private void checkIndex(int index) {
