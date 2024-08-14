@@ -1,5 +1,7 @@
 package studyingHashMap;
 
+import java.util.Objects;
+
 public class CarOwner {
     private int id;
     private String name;
@@ -33,5 +35,20 @@ public class CarOwner {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CarOwner carOwner = (CarOwner) obj;
+        return id == carOwner.id &&
+                name.equals(carOwner.name) &&
+                lastName.equals(carOwner.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, lastName);
     }
 }

@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import studyingArrayList.Car;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,10 +13,10 @@ class CarMapTest {
 
     private CarMap carMap;
 
-    //todo Проинициализаровать CarMap
     @BeforeEach
     void setUp() {
-        for (int i = 0; i < 35; i++){
+        carMap = new CarHashMap();
+        for (int i = 0; i < 35; i++) {
             CarOwner carOwner = new CarOwner(i, "Name " + i, "LastName " + i);
             Car car = new Car("Brand " + i, i);
             carMap.put(carOwner, car);
@@ -67,12 +65,15 @@ class CarMapTest {
     }
 
     @Test
-    public void testValues() {
-        List<Car> expectedValues = new ArrayList<>();
-        for (int i = 0; i < 35; i++) {
-            expectedValues.add(new Car("Brand " + i, i));
+    public void countOfKeysMustBeEqualsToCountOfValues() {
+        for (int i = 0; i < 100; i++) {
+            CarOwner carOwner = new CarOwner(i, "Name" + i, "LastName" + i);
+            Car car = new Car("Brand" + i, i);
+            carMap.put(carOwner, car);
         }
-        assertEquals(expectedValues, carMap.values());
+        assertEquals(135, carMap.size());
+        assertEquals(135, carMap.keySet().size());
+        assertEquals(135, carMap.values().size());
     }
 
     @Test
