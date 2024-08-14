@@ -49,6 +49,6 @@ public class CarOwner {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastName);
+        return Math.abs(Objects.hash(id, name, lastName));
     }
 }
