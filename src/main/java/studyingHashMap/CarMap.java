@@ -1,7 +1,5 @@
 package studyingHashMap;
 
-import studyingArrayList.Car;
-
 import java.util.List;
 import java.util.Set;
 

@@ -1,6 +1,5 @@
 package studyingHashSet;
 
-import studyingArrayList.Car;
 import studyingCollection.CarCollection;
 
 public interface CarSet<T> extends CarCollection<T> {

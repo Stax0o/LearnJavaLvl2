@@ -1,6 +1,5 @@
 package studyingQueue;
 
-import studyingArrayList.Car;
 import studyingCollection.CarCollection;
 
 public interface CarQueue<T> extends CarCollection<T> {

@@ -1,6 +1,5 @@
 package studyingLinkedList;
 
-import studyingArrayList.Car;
 import studyingArrayList.CarList;
 import studyingQueue.CarQueue;
 

@@ -1,7 +1,5 @@
 package studyingHashSet;
 
-import studyingArrayList.Car;
-
 import java.util.Iterator;
 
 public class CarHashSet<T> implements CarSet<T> {

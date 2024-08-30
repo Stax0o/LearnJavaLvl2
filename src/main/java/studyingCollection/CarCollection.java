@@ -1,7 +1,5 @@
 package studyingCollection;
 
-import studyingArrayList.Car;
-
 public interface CarCollection<T> extends Iterable<T> {
     boolean add(T car);
 
