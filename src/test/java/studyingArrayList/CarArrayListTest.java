@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarArrayListTest {
 
-    private CarList carList;
+    private CarList<Car> carList;
 
     @BeforeEach
     void setUp() {
-        carList = new CarArrayList();
+        carList = new CarArrayList<>();
         for (int i = 0; i < 35; i++) {
             carList.add(new Car("Brand " + i, i));
         }

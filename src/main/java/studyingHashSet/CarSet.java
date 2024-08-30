@@ -1,12 +1,11 @@
 package studyingHashSet;
 
-import studyingArrayList.Car;
 import studyingCollection.CarCollection;
 
-public interface CarSet extends CarCollection {
-    boolean add(Car car);
+public interface CarSet<T> extends CarCollection<T> {
+    boolean add(T car);
 
-    boolean remove(Car car);
+    boolean remove(T car);
 
     int size();
 

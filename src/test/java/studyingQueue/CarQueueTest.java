@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarQueueTest {
 
-    private CarQueue carQueue;
+    private CarQueue<Car> carQueue;
 
     @BeforeEach
     void setUp() {

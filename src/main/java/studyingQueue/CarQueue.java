@@ -1,12 +1,11 @@
 package studyingQueue;
 
-import studyingArrayList.Car;
 import studyingCollection.CarCollection;
 
-public interface CarQueue extends CarCollection {
-    boolean add(Car car);
+public interface CarQueue<T> extends CarCollection<T> {
+    boolean add(T car);
 
-    Car peek();
+    T peek();
 
-    Car poll();
+    T poll();
 }
