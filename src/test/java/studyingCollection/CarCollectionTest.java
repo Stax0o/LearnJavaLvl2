@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarCollectionTest {
 
-    private CarCollection cars;
+    private CarCollection<Car> cars;
 
     @BeforeEach
     void setUp() {
-        cars = new CarHashSet();
+        cars = new CarHashSet<Car>();
         for (int i = 0; i < 35; i++) {
             cars.add(new Car("Brand " + i, i));
         }
