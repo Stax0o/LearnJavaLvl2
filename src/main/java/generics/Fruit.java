@@ -3,7 +3,7 @@ package generics;
 public abstract class Fruit {
     private double weight;
 
-    public Fruit(double weight) {
+    Fruit(double weight) {
         this.weight = weight;
     }
 
