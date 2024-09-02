@@ -28,7 +28,8 @@ public class Concurrency {
 
         // Perform calculations on each element of the array
         for (int i = 0; i < array.length; i++) {
-            array[i] = (float) (array[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
+            float f = (float) i;
+            array[i] = (float) (array[i] * Math.sin(0.2f + f / 5) * Math.cos(0.2f + f / 5) * Math.cos(0.4f + f / 2));
         }
 
         // Return the execution time
