@@ -10,10 +10,7 @@ public class LExecutors {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         CountDownLatch countDownLatch = new CountDownLatch(3);
 
-        //Timer
-        long start = System.currentTimeMillis();
-
-        executorService.execute(() -> {
+        Runnable task1 = () -> {
             System.out.println("Задача 1: Начало");
             long result = 0;
             for (int i = 0; i < 1_000_000; i += 2) {
@@ -21,9 +18,9 @@ public class LExecutors {
             }
             System.out.println("Задача 1: Конец - " + result);
             countDownLatch.countDown();
-        });
+        };
 
-        executorService.execute(() -> {
+        Runnable task2 = () -> {
             System.out.println("Задача 2: Начало");
             long result = 0;
             for (int i = 0; i < 1_000_000; i += 7) {
@@ -31,9 +28,9 @@ public class LExecutors {
             }
             System.out.println("Задача 2: Конец - " + result);
             countDownLatch.countDown();
-        });
+        };
 
-        executorService.execute(() -> {
+        Runnable task3 = () -> {
             System.out.println("Задача 3: Начало");
             int[] array = new int[1_000];
             Random random = new Random();
@@ -48,7 +45,14 @@ public class LExecutors {
             }
             System.out.println("Задача 3: Конец - " + count);
             countDownLatch.countDown();
-        });
+        };
+
+        //Timer
+        long start = System.currentTimeMillis();
+
+        executorService.execute(task1);
+        executorService.execute(task2);
+        executorService.execute(task3);
         executorService.shutdown();
 
         try {
