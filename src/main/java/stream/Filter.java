@@ -20,7 +20,7 @@ public class Filter {
         }
     }
 
-    public static List<Integer> filter(List<Integer> list, Predicate predicate) {
+    private static List<Integer> filter(List<Integer> list, Predicate predicate) {
         List<Integer> result = new ArrayList<>();
         for (int i : list) {
             if (predicate.test(i)) {

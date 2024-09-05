@@ -1,6 +1,6 @@
 package stream;
 
-public class Stream {
+public class Lambda {
     public static void main(String[] args) {
         Director director = new Director();
         String result = director.force((int n) -> {
