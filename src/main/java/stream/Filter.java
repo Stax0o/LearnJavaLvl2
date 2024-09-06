@@ -16,7 +16,7 @@ public class Filter {
         List<String> list2 = list.stream()
                 .filter(n -> n % 2 == 0 && n % 5 == 0)
                 .map(Math::sqrt)
-                .map(scrt ->"Sqrt: " + scrt)
+                .map(scrt -> "Sqrt: " + scrt)
                 .collect(Collectors.toList());
 
         for (String s : list2) {
@@ -24,6 +24,10 @@ public class Filter {
         }
         System.out.println(list2.size());
 
+        list.stream()
+                .sorted()
+                .limit(5)
+                .forEach(System.out::println);
     }
 
 //    private static List<Integer> filter(List<Integer> list, Predicate predicate) {
